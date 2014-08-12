@@ -1,5 +1,5 @@
 class Plateau
-	def initialize(x_grid_limit, y_grid_limit)
+	def grid_limits(x_grid_limit, y_grid_limit)
 		@x_grid_limit = x_grid_limit.to_i
 		@y_grid_limit = y_grid_limit.to_i
 	end
@@ -21,7 +21,7 @@ class Rover < Plateau
 	end
 
 	def rover_input(movements)
-		separated_movements = movements.split(//)
+		separated_movements = movements.scan(/./)
 		separated_movements.each do |movement|
 			case movement
 				when "L"
@@ -66,13 +66,18 @@ class Rover < Plateau
 				@y_position -= 1
 		end
 	end
-	puts "#{@x_position}, #{@y_position}, #{@direction}"
+	def final_location
+		puts "#{@x_position}, #{@y_position}, #{@direction}"
+	end
 end
 
-plateau = Plateau.new(5, 5)
+plateau = Plateau.new
+plateau.grid_limits(5, 5)
 
 rover1 = Rover.new(1, 2, "N")
 rover1.rover_input("LMLMLMLMM")
+rover1.final_location
 
 rover2 = Rover.new(3, 3, "E")
 rover2.rover_input("MMRMMRMRRM")
+rover2.final_location
