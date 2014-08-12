@@ -36,24 +36,6 @@ class Rover < Plateau
 		end
 	end
 
-	def turn_left
-		case @direction
-			when "N" then "E"
-			when "E" then "S"
-			when "S" then "W"
-			when "W" then "N"
-		end
-	end
-
-	def turn_right
-		case @direction
-			when "N" then "W"
-			when "W" then "S"
-			when "S" then "E"
-			when "E" then "N"
-		end
-	end
-
 	def move_one
 		case @direction
 			when "N"
@@ -64,6 +46,24 @@ class Rover < Plateau
 				@x_position -= 1
 			when "S"
 				@y_position -= 1
+		end
+	end
+
+	def turn_right
+		case @direction
+			when "N" then @direction = "E"
+			when "E" then @direction = "S"
+			when "S" then @direction = "W"
+			when "W" then @direction = "N"
+		end
+	end
+
+	def turn_left
+		case @direction
+			when "N" then @direction = "W"
+			when "W" then @direction = "S"
+			when "S" then @direction = "E"
+			when "E" then @direction = "N"
 		end
 	end
 	def final_location
