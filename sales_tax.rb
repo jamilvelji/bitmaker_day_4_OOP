@@ -1,14 +1,18 @@
 class SalesTax
 	attr_accessor :print_receipt
+	# Tax constants
 	SALES_TAX = 0.10
 	IMPORT_TAX = 0.05
+	# Tax exempt items for comparing
 	TAX_EXEMPT = ["chocolates", "books", "pills", "chocolate"]
 
 	def initialize(receipt_array)
+		# Takes the receipt array input
 		@receipt_array = receipt_array
 	end
 
 	def print_receipt
+		# Sets the total and tax variables for collecting the last 2 receipt returns
 		total_tax = 0
 		total_price = 0
 
